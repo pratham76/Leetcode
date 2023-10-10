@@ -32,8 +32,7 @@ class Solution:
                 r-=1
             else:
                 l+=1
-        return max_area
 
-        
+        return max_area
 
 
