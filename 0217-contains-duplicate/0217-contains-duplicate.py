@@ -1,9 +1,15 @@
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        hash={}
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        hash=collections.defaultdict(int)
+        for i in nums:
+            hash[i]+=1
+        
         for i in range(len(nums)):
-            if nums[i] in hash:
+            if hash[nums[i]]>1:
                 return True
-            else:
-                hash[nums[i]]=1
         return False
+        
