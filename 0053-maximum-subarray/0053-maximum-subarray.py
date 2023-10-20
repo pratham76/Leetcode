@@ -19,4 +19,5 @@ class Solution:
                 cursum=0
             cursum+=nums[i]
             maxsub=max(maxsub,cursum)
+            
         return maxsub
