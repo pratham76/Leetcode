@@ -9,5 +9,5 @@ class Solution(object):
             temp=one
             one=one+two
             two=temp
-        
         return one
+        
