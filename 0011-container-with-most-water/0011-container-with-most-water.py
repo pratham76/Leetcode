@@ -1,38 +1,16 @@
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
+class Solution(object):
+    def maxArea(self, height):
         """
-        Brute fore
-        res=0
-        for i in range(len(height)-1):
-            for j in range(i+1,len(height)):
-                area=(j-i)*(min(height[j],height[i]))
-                res=max(res,area)
-        return res
+        :type height: List[int]
+        :rtype: int
         """
-        #O(N)
-        '''
         l,r=0,len(height)-1
         max_area=0
         while l<r:
-            area=(r-l)*min(height[r],height[l])
-            max_area=max(area,max_area)
-            if height[l]>height[r]:
-                r-=1
-            else:
-                l+=1
-        
-        return max_area
-        '''
-        l,r=0,len(height)-1
-        max_area=0
-        while l<r:
-            area=(r-l)*min(height[r],height[l])
+            area=(r-l)*min(height[l],height[r])
             max_area=max(area,max_area)
             if height[l]<height[r]:
                 l+=1
             else:
                 r-=1
         return max_area
-
-
-
