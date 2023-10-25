@@ -1,12 +1,17 @@
-class Solution:
-    def sortArray(self, nums: List[int]) -> List[int]:
-            if len(nums)<=1:
-                return nums
-            mid=len(nums)//2
-            l,r=nums[:mid],nums[mid:]
-            left,right=self.sortArray(l),self.sortArray(r)
+class Solution(object):
+    def sortArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        if len(nums)<=1:
+            return nums
+        mid=len(nums)//2
+        left=self.sortArray(nums[:mid])
+        right=self.sortArray(nums[mid:])
 
-            return self.merge(left,right)
+        return self.merge(left,right)
+
     def merge(self,left,right):
         res=[]
         i,j=0,0
@@ -24,12 +29,4 @@ class Solution:
             res.extend(right[j:])
         
         return res
-
-
-       
-
-
-             
-
-
-        
+    
