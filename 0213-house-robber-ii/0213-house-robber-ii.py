@@ -1,5 +1,5 @@
-class Solution:
-    def rob(self, nums: List[int]) -> int:
+class Solution(object):
+    def rob(self, nums):
         if not nums: return 0
         
         return max(nums[0],self.helper(nums[1:]),self.helper(nums[:-1]))
@@ -12,4 +12,5 @@ class Solution:
                 a=b
                 b=rob
             return b
+        
         
