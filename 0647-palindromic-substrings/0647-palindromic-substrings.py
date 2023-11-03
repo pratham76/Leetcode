@@ -1,9 +1,24 @@
-class Solution:
-    def countSubstrings(self, s: str) -> int:
-        count=0
+class Solution(object):
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        #O(n2)
+        res=0
         for i in range(len(s)):
-            for j in range(i+1,len(s)+1):
-                sub=s[i:j]
-                if sub==sub[::-1]:
-                    count+=1
-        return count
+            #oddlen
+            l,r=i,i
+            while l>=0 and r<len(s) and s[l]==s[r]:
+                res+=1
+                l-=1
+                r+=1
+            
+            #evenlen
+            l,r=i,i+1
+            while l>=0 and r<len(s) and s[l]==s[r]:
+                res+=1
+                l-=1
+                r+=1
+            
+        return res
