@@ -1,28 +1,30 @@
 # Definition for a binary tree node.
-# class TreeNode:
+# class TreeNode(object):
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        def isIdentical(tree1, tree2):
-            if not tree1 and not tree2:
+class Solution(object):
+    def isSubtree(self, root, subRoot):
+        """
+        :type root: TreeNode
+        :type subRoot: TreeNode
+        :rtype: bool
+        """
+        def isidentical(root1,root2):
+            if not root1 and not root2:
                 return True
-            if not tree1 or not tree2:
+            if not root1 or not root2:
                 return False
-            return (
-                tree1.val == tree2.val and
-                isIdentical(tree1.left, tree2.left) and
-                isIdentical(tree1.right, tree2.right)
-            )
+            return (root1.val==root2.val) and isidentical(root1.left,root2.left) and isidentical(root1.right,root2.right)
         
-        # Base case: if the root tree is None, return False
         if not root:
             return False
-        
-        # Check if the current node in the root tree matches the subRoot tree
-        if isIdentical(root, subRoot):
+        if isidentical(root, subRoot):
             return True
         
-        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+        return self.isSubtree(root.left,subRoot) or self.isSubtree(root.right,subRoot)
+        
+        
+            
+        
