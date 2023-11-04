@@ -14,6 +14,8 @@ class Solution(object):
         :rtype: TreeNode
         """
         curr=root
+        if not curr:
+            return 
         while curr:
             if p.val<curr.val and q.val<curr.val:
                 curr=curr.left
@@ -21,4 +23,5 @@ class Solution(object):
                 curr=curr.right
             else:
                 return curr
+
         
