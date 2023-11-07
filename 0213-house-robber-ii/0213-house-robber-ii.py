@@ -1,16 +1,16 @@
 class Solution(object):
     def rob(self, nums):
-        if not nums: return 0
+        if not nums:
+            return
+        return max(nums[0], self.helper(nums[1:]),self.helper(nums[:-1]))
         
-        return max(nums[0],self.helper(nums[1:]),self.helper(nums[:-1]))
-
-    
     def helper(self,nums):
-            a,b=0,0
-            for i in range(len(nums)):
-                rob=max(nums[i]+a,b)
-                a=b
-                b=rob
-            return b
-        
+        rob1,rob2=0,0
+
+        for n in nums:
+            newrob=max(rob1+n,rob2)
+            rob1=rob2
+            rob2=newrob
+        return rob2
+
         
